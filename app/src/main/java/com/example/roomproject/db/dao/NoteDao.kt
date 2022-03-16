@@ -15,4 +15,8 @@ interface NoteDao {
 
     @Query("SELECT * from note_table")
     fun getAllNotes(): LiveData<List<NoteModel>>
+
+    @Update
+    suspend fun update(noteModel: NoteModel)
+
 }

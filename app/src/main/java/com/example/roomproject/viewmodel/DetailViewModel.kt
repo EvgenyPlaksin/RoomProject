@@ -16,4 +16,10 @@ class DetailViewModel: ViewModel() {
             }
         }
 
+    fun update(noteModel: NoteModel, onSuccess:() -> Unit) =
+        viewModelScope.launch(Dispatchers.IO) {
+            Constants.REPOSITORY.updateNote(noteModel){
+                onSuccess()
+            }
+        }
 }

@@ -9,6 +9,7 @@ android {
     compileSdk 32
 
     defaultConfig {
+
         applicationId "com.example.roomproject"
         minSdk 23
         targetSdk 32
@@ -16,7 +17,20 @@ android {
         versionName "1.0"
         viewBinding.enabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        kapt {
+            arguments {
+                arg("room.schemaLocation", "$projectDir/schemas")
+            }
+        }
+
     }
+    sourceSets {
+        getByName("androidTest") {
+            assets.srcDirs(files(projectDir, "schemas"))
+        }
+    }
+
 
     buildTypes {
         release {

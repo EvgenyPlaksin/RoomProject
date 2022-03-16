@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import com.example.roomproject.R
 import com.example.roomproject.databinding.FragmentDetailBinding
-import com.example.roomproject.databinding.FragmentStartBinding
 import com.example.roomproject.model.NoteModel
 import com.example.roomproject.utils.Constants.APP
 import com.example.roomproject.viewmodel.DetailViewModel
@@ -45,6 +44,15 @@ class DetailFragment : Fragment() {
 
         binding.btnDelete.setOnClickListener{
             viewModel.delete(currentNote){}
+            APP.navController.navigate(R.id.action_detailFragment_to_startFragment)
+        }
+
+        binding.btnUpdate.setOnClickListener{
+            val viewModel = ViewModelProvider(this)[DetailViewModel::class.java]
+            val title = binding.edittextTitle.text.toString()
+            val description = binding.edittextDescription.text.toString()
+            val updatedNote = NoteModel(currentNote.id, title, description)
+            viewModel.update(updatedNote){}
             APP.navController.navigate(R.id.action_detailFragment_to_startFragment)
         }
 

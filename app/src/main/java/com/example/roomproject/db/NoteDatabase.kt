@@ -2,13 +2,19 @@ package com.example.roomproject.db
 
 import android.content.Context
 import android.provider.ContactsContract
+import androidx.room.AutoMigration
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.roomproject.db.dao.NoteDao
 import com.example.roomproject.model.NoteModel
 
-@Database(entities = [NoteModel::class], version = 1) // с каждым изменением дао после запуска обязательно менять версию в сторону +1
+@Database(entities = [NoteModel::class],
+    version = 2,
+    exportSchema = true,
+    autoMigrations = [
+        AutoMigration (from = 1, to = 2)]
+) // с каждым изменением дао после запуска обязательно менять версию в сторону +1
 abstract class NoteDatabase: RoomDatabase() {
 
     abstract fun getNoteDao(): NoteDao

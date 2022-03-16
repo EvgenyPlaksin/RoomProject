@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import com.example.roomproject.R
 import com.example.roomproject.databinding.FragmentAddBinding
-import com.example.roomproject.databinding.FragmentStartBinding
 import com.example.roomproject.model.NoteModel
 import com.example.roomproject.utils.Constants.APP
 import com.example.roomproject.viewmodel.AddNoteViewModel
